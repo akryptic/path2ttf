@@ -1,0 +1,10 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "path2ttf",
+	"compatibility_date": "2026-11-24",
+	"assets": {
+		"directory": "./build"
+	},
+	"workers_dev": true,
+	"preview_urls": true
+}

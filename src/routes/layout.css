@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #22262e;
+  --color-surface-container-low: #1b1e24;
+  --color-surface-container: #2b313a;
+  --color-surface-container-high: #343b46;
+  --color-on-surface: #f1f5f9;
+  --color-on-surface-variant: #a0abb8;
+
+  --color-primary: #8ce071;
+  --color-on-primary: #142112;
+  --color-primary-container: #273a2b;
+  --color-on-primary-container: #b8f0a4;
+
+  --color-secondary: #7dd3c8;
+  --color-on-secondary: #112220;
+  --color-secondary-container: #1d3534;
+  --color-on-secondary-container: #b5ede6;
+
+  --color-tertiary: #f6c478;
+  --color-on-tertiary: #261b08;
+  --color-tertiary-container: #3a2d1b;
+  --color-on-tertiary-container: #fde4b8;
+
+  --color-outline: #444c59;
+  --color-outline-variant: #323843;
+  --color-lavender: #a7e892;
+  --color-pink: #f5c2e7;
+  --color-green: #8ce071;
+  --color-error: #f38ba8;
+  --color-on-error: #1b1e24;
+
+  --font-display: "Mulish", sans-serif;
+  --font-headline: "Mulish", sans-serif;
+  --font-title: "Instrument Sans", sans-serif;
+  --font-body: "Instrument Sans", sans-serif;
+  --font-label: "Instrument Sans", sans-serif;
+  --font-mono: "Spline Sans Mono", monospace;
+
+  --spacing-gutter-xs: 4px;
+  --spacing-gutter-sm: 8px;
+  --spacing-gutter-md: 16px;
+  --spacing-gutter-lg: 24px;
+  --spacing-gutter-xl: 32px;
+  --spacing-section: 64px;
+  --spacing-page-margin: 24px;
+
+  --radius-sm: 6px;
+  --radius-DEFAULT: 12px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+}
