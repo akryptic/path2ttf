@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { ArrowRight } from '@lucide/svelte';
+	import { ArrowRight, Circle } from '@lucide/svelte';
 
 	const title = 'path2ttf — Convert SVG Icons to PUA-Mapped TTF Fonts';
 	const description =
@@ -20,6 +20,34 @@
 
 	// Some quircky stuff :)
 	const jsonld_str = '<script type="application/ld+json">' + jsonLd + '</scr' + 'ipt>';
+
+	interface IStep {
+		title: string;
+		description: string;
+		img: string;
+	}
+
+	// Steps
+	const stepData: IStep[] = [
+		{
+			title: 'Pick or Upload SVGs',
+			description:
+				'Grab icons from Lucide or Tabler, or drop in your own SVG files. Everything stays saved right in your browser.',
+			img: 'step-1-pick-upload-svg.svg'
+		},
+		{
+			title: 'Configure and Generate Your Font',
+			description:
+				'Turns thin line icons into solid shapes, sets your font name and size rules, gives each icon a code, and downloads a TTF file.',
+			img: 'step-2-stroke-to-font-config.svg'
+		},
+		{
+			title: 'Preview & Use Your Font',
+			description:
+				'Test your TTF right on the page—even one you already had—and click to copy icon codes for your project.',
+			img: 'step-3-pua-glyph-preview.svg'
+		}
+	];
 </script>
 
 <svelte:head>
@@ -96,6 +124,24 @@
 					/>
 				</div>
 			</section>
+
+			<section aria-labelledby="hero-heading" class="py-16">
+				<div class="text-center">
+					<h2 id="hero-heading" class="font-title text-4xl font-bold">
+						How It Works in Three Simple Steps
+					</h2>
+					<p
+						class="text-body-md mx-auto my-4 max-w-prose font-body text-pretty text-on-surface-variant"
+					>
+						Pick / Upload icons, configure the font, preview / export the PUA mapped TTF.
+					</p>
+				</div>
+				<div class="mt-16">
+					{#each stepData as s, idx (idx)}
+						{@render step(s, idx, stepData.length)}
+					{/each}
+				</div>
+			</section>
 		</div>
 	</main>
 
@@ -125,4 +171,43 @@
 	>
 		path2<span class="ml-1 inline-block text-primary">ttf</span>
 	</span>
+{/snippet}
+
+{#snippet step({ title, description, img }: IStep, idx: number, stepCount: number)}
+	<!-- Ignore the comments, I couldn't come up with good names for these sections :p -->
+	<div
+		class="grid grid-cols-[auto_1fr] grid-rows-2 gap-x-6 md:grid-cols-[1fr_auto_1fr] md:grid-rows-1"
+	>
+		<!-- Step details -->
+		<div
+			class="p-4 pb-0 {idx % 2 ? 'md:order-1' : 'md:-order-1'} {idx != stepCount - 1
+				? 'pb-16'
+				: ''}"
+		>
+			<span
+				class="rounded bg-primary-container px-2 py-1 text-xs font-semibold text-on-primary-container"
+			>
+				Step {idx + 1}
+			</span>
+			<h3 class="my-2 font-title text-xl font-bold">{title}</h3>
+			<p class="text-on-surface-variant">{description}</p>
+		</div>
+
+		<!-- Progression Line -->
+		<div
+			class="relative -order-1 row-span-2 w-0.75 bg-primary text-primary md:order-0 {idx ==
+			stepCount - 1
+				? 'h-14'
+				: 'h-full'}"
+		>
+			<Circle fill="currentColor" class="absolute top-5 left-1/2 size-4 -translate-x-1/2" />
+		</div>
+
+		<!-- Step Image -->
+		<div class="px-4 {idx % 2 ? 'md:-order-1 md:ml-auto' : ' md:order-1'} ">
+			<div class="w-fit overflow-hidden rounded border border-outline bg-surface-container-low p-1">
+				<img src="/images/{img}" alt="" />
+			</div>
+		</div>
+	</div>
 {/snippet}
